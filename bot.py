@@ -1,5 +1,9 @@
 import discord
+import json
 from discord.ext import commands
+
+with open("/home/brine/Codes/Python/settings.json", 'r') as file:
+    settings = json.load(file)
 
 
 intents = discord.Intents.default()
@@ -33,6 +37,8 @@ async def on_member_remove(member):
 async def ping(context):
     await context.send(f"{round(bot.latency * 1000)} ms.")
 
-tokenFile = open("/home/brine/Codes/Python/token.txt", 'r')
-TOKEN = tokenFile.readline()
-bot.run(TOKEN)
+@bot.command()
+async def picture(context):
+    await context.send(file = discord.File("/home/brine/Codes/Python/BCalendar/output/temp.png"))
+
+bot.run(settings["TOKEN"])
