@@ -2,7 +2,7 @@ import discord
 import json
 from discord.ext import commands
 
-with open("/home/brine/Codes/Python/settings.json", 'r') as file:
+with open("./settings.json", 'r') as file:
     settings = json.load(file)
 
 
@@ -39,6 +39,6 @@ async def ping(context):
 
 @bot.command()
 async def picture(context):
-    await context.send(file = discord.File("/home/brine/Codes/Python/BCalendar/output/temp.png"))
+    await context.send(file = discord.File("./BCalendar/output/temp.png"))
 
 bot.run(settings["TOKEN"])
